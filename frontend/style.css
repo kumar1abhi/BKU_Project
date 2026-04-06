@@ -1,0 +1,207 @@
+body {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.site-heading {
+    background-color: #2e7d32;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+}
+
+.site-header {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.nav-logo {
+    height: 70px;
+}
+
+.site-header .main-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.navbar-row {
+    background-color: #1b5e20;
+    padding: 0.25rem 0;
+}
+
+.navbar-row .navbar-nav {
+    display: flex !important;
+    list-style: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-direction: row !important;
+}
+
+.navbar-row .nav-item {
+    margin: 0 0.5rem !important;
+    display: inline-block !important;
+}
+
+.navbar-row .nav-item {
+    margin: 0 0.5rem;
+}
+
+.navbar-row .nav-link {
+    color: white !important;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar-row .nav-link:hover {
+    color: #ffb300 !important;
+}
+
+@media (max-width: 768px) {
+    .site-header .main-title {
+        font-size: 2rem;
+    }
+    .navbar-row .nav-link {
+        font-size: 1.1rem;
+    }
+    .navbar-row .btn-warning {
+        font-size: 1.1rem;
+    }
+}
+
+.nav-logo {
+    height: 80px;
+}
+
+.navbar-row .btn-warning {
+    font-size: 1.3rem;
+    background-color: #ffb300;
+    border: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('assets/hero1.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Match Bootstrap container: centered, same max-widths, same my-4 margins */
+    width: 100%;
+    max-width: 1320px;
+    margin: 1.5rem auto;
+    padding: 0 12px;
+    aspect-ratio: 16 / 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 5px solid #2e7d32;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.hero-text {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.border-green {
+    border: 5px solid #2e7d32;
+}
+
+.txt-green {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.txt-blue {
+    color: #0d47a1;
+    font-weight: bold;
+}
+
+.slogans {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(209, 255, 234, 0.829), rgba(177, 255, 184, 0.95));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.title-underline {
+    color: #2e7d32;
+    display: inline-block;
+    padding-bottom: 10px;
+    border-bottom: 4px solid #ffb300;
+}
+
+.leader-img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    background: white;
+    border-top: 1px solid #ddd;
+}
+
+.copy-bar {
+    background-color: #1b5e20;
+    color: white;
+    text-align: center;
+}
+
+/* Hover and click enlarge effects for leaders and gallery */
+.leader-img, 
+#gallery img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leader-img:hover, 
+#gallery img:hover,
+.leader-img:focus,
+#gallery img:focus {
+    transform: scale(1.1);
+    z-index: 10;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.leader-img:active, 
+#gallery img:active {
+    transform: scale(1.15);
+}
