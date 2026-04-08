@@ -77,24 +77,31 @@ const Member = mongoose.model('Member', MembershipSchema);
 // API Routes
 app.post('/api/complaint', async (req, res) => {
   try {
+    console.log("Incoming Data:", req.body); // 👈 ADD THIS
+
     const newComplaint = new Complaint(req.body);
     await newComplaint.save();
+
     res.status(200).send({ message: "Saved" });
   } catch (err) {
-    res.status(500).send(err);
+    console.error("ERROR:", err); // 👈 ADD THIS
+    res.status(500).json({ error: err.message });
   }
 });
 
 app.post('/api/membership', async (req, res) => {
   try {
+    console.log("Incoming Data:", req.body);
+
     const newMember = new Member(req.body);
     await newMember.save();
+
     res.status(200).send({ message: "Saved" });
   } catch (err) {
-    res.status(500).send(err);
+    console.error("ERROR:", err);
+    res.status(500).json({ error: err.message });
   }
 });
-
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
