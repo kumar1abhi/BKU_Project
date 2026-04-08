@@ -14,9 +14,18 @@ async function handleForm(formId, apiEndpoint) {
             });
 
             if (response.ok) {
-                alert('सफलतापूर्वक सबमिट किया गया!');
                 form.reset();
-                bootstrap.Modal.getInstance(document.getElementById(formId.replace('Form', 'Modal'))).hide();
+                try {
+                    const modalId = formId.replace('Form', 'Modal');
+                    const modalEl = document.getElementById(modalId);
+                    if (modalEl) {
+                        bootstrap.Modal.getInstance(modalEl).hide();
+                    }
+                } catch (_) { /* ignore modal close errors */ }
+                alert('सफलतापूर्वक सबमिट किया गया!');
+                return; // done — skip the else and the catch
+            } else {
+                alert('सर्वर एरर! कृपया बाद में प्रयास करें।');
             }
         } catch (error) {
             alert('सर्वर एरर! कृपया बाद में प्रयास करें।');
