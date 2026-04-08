@@ -45,11 +45,19 @@ app.use(express.static(path.join(__dirname, '../frontend'))); // Serve frontend 
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
-// Connect to MongoDB
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log("MongoDB Connected Successfully"))
-  .catch(err => console.log("MongoDB Connection Error:", err));
+console.log("Using URI:", MONGODB_URI);
 
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log("MongoDB Connected Successfully");
+})
+.catch((err) => {
+  console.error("MongoDB Connection Error:", err);
+});
 // Define Schemas
 const ComplaintSchema = new mongoose.Schema({
   fullName: String,
