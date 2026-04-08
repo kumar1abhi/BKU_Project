@@ -7,7 +7,7 @@ async function handleForm(formId, apiEndpoint) {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch(`http://localhost:5000/api/${apiEndpoint}`, {
+        const response = await fetch(`/api/${apiEndpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
