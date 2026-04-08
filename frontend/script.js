@@ -7,7 +7,7 @@ async function handleForm(formId, apiEndpoint) {
         const data = Object.fromEntries(formData.entries());
 
         try {
-        const response = await fetch(`/api/${apiEndpoint}`, {
+        const response = await fetch(`https://bku-project.onrender.com/api/${apiEndpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
