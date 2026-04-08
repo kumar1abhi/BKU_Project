@@ -22,11 +22,22 @@ if (process.env.NODE_ENV === 'production') {
 app.use(morgan('combined'));
 
 // CORS configuration
-const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' ? process.env.CORS_ORIGIN : 'http://localhost:3000',
+const allowedOrigins = [
+  "http://localhost:5173", // local (Vite)
+  "https://bkuat.com",
+  "https://bku-project-9jbmzjc1e-kumarabhiis-projects.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
-};
-app.use(cors(corsOptions));
+}));
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend'))); // Serve frontend static files
