@@ -43,7 +43,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend'))); // Serve frontend static files
 
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bku_db';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI)
