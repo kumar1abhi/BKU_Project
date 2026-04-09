@@ -48,16 +48,22 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 console.log("Using URI:", MONGODB_URI);
 
-// Connect to MongoDB
+// Connect to MongoDB with timeout options for Render/Atlas
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  bufferCommands: false,
+  bufferMaxEntries: 0,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+  family: 4  // Use IPv4, skip IPv6
 })
 .then(() => {
-  console.log("MongoDB Connected Successfully");
+  console.log("✅ MongoDB Connected Successfully");
 })
 .catch((err) => {
-  console.error("MongoDB Connection Error:", err);
+  console.error("❌ MongoDB Connection Error:", err.message);
+  process.exit(1);  // Exit on connection fail for Render detection
 });
 // Define Schemas
 const ComplaintSchema = new mongoose.Schema({
@@ -112,5 +118,17 @@ app.post('/api/membership', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+  const dbState = mongoose.connection.readyState;
+  const states = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+  res.json({ 
+    status: 'ok', 
+    dbState: states[dbState],
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Start server
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 
